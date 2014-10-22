@@ -7,20 +7,20 @@ body {
   background: #fafafa;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #333;
+  background-image: url(http://www.zastavki.com/pictures/1920x1200/2009/World_Africa_African_savanna_019014_.jpg)
 }
 
-.hero-unit {
-  margin: 50px auto 0 auto;
-  width: 600px;
-  font-size: 18px;
-  font-weight: 200;
-  line-height: 30px;
-  background-color: #eee;
-  border-radius: 6px;
-  padding: 60px;
-  h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
+container {
+  size: 100%;
+  background-image: url(http://www.zastavki.com/pictures/1920x1200/2009/World_Africa_African_savanna_019014_.jpg);
+}
+.good {
+  border: solid 1px black;
+  float: left;
+  font-size: 60px;
+}
+.bad {
+  border: solid 2px red;
+  float: right;
+  font-size: 60px;
 }
