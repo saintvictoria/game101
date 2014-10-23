@@ -7,8 +7,8 @@ var Elephant = function (options){
   this.age = options.age;
   this.color = options.color;
   this.health = options.health;
-  this.attack = function(stomp){
-    stomp.health = (stomp.health - _.random(20, 25));
+  this.attack = function(stomped){
+    stomped.health = (stomped.health - _.random(20, 25));
   };
 };
 
@@ -18,8 +18,8 @@ var Lion = function (options){
   this.age = options.age;
   this.color = options.color;
   this.health = options.health;
-  this.attack = function(chomp){
-    chomp.health = (chomp.health - _.random(20, 25));
+  this.attack = function(chomped){
+    chomped.health = (chomped.health - _.random(20, 25));
   };
   this.life = options.life ||'normal';
 };
