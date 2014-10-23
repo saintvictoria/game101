@@ -51,3 +51,12 @@ var Timba = new Lion({
 
 console.log(Malenda.attack(Timba))
 console.log(Timba)
+
+function GameController(playersArray) {
+    this._players = playerArray;
+    this._turn = this._player[0];
+}
+GameController.prototype.isFinished = function() {
+  // check players for death
+  this._players
+}

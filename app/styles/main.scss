@@ -15,14 +15,16 @@ container {
   background-image: url(http://www.zastavki.com/pictures/1920x1200/2009/World_Africa_African_savanna_019014_.jpg);
 }
 .good {
-  border: solid 1px black;
+  border: solid 2px gray;
   float: left;
   font-size: 60px;
+  color: gray;
 }
 .bad {
-  border: solid 2px red;
+  border: solid 2px yellow;
   float: right;
   font-size: 60px;
+  color: yellow;
 }
 .lionbut {
   float: right;
