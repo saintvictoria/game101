@@ -28,7 +28,7 @@ function GameController(leftCombatants, rightCombatants) {
     };
     this.playerChoosesCombatant = function(combatant){
       this.playerCombatant = combatant;
-      this._computerChoosesCombatant()
+      this._computerChoosesCombatant();
     };
     this._computerChoosesCombatant = function(){
       //whatever side the player did not choose
@@ -36,17 +36,29 @@ function GameController(leftCombatants, rightCombatants) {
       //so the computer combatant is one from its side
       var combatantChoices;
       if ('left' === this.player){
-        combatantChoices = rightCombatants;
+        combatantChoices = this.rightCombatants;
       }else{
-        combatantChoices = leftCombatants;
+        combatantChoices = this.leftCombatants;
       }
       this.computerCombatant = _.sample(combatantChoices);
     };
+
     this.attack = function(){
+      console.log(this.playerCombatant,"vs", this.computerCombatant);
+      if(this.gameIsFinished()) {
+        //console.log(this.gameIsFinished,"game is over")
+        return;
+      }
+
       this.playerCombatant.attack(this.computerCombatant);
+      if(this.gameIsFinished()) {
+        return;
+      }
       this.computerCombatant.attack(this.playerCombatant);
     };
     this.gameIsFinished = function(){
+      return this.playerCombatant.health <= 0 ||
+              this.computerCombatant.health <= 0;
     };
 };
 
@@ -82,26 +94,68 @@ var Lion = function (options){
 };
 
 var solanga = new Elephant({
+  name: "solanga",
   age: 14,
   color: "gray",
   health: 100
 });
 
 var malenda = new Elephant({
+  name:"malenda",
   age: 17,
   color: "gray",
   health: 100
-})
+});
+
+var pinky = new Elephant({
+  name:"pinky",
+  age: 39,
+  color: "gray",
+  health: 95
+});
 
 var scar = new Lion({
+  name: "scar",
   age: 14,
   color: "yellow",
   life: 'poor',
   health: 75
-})
+});
 
 var timba = new Lion({
+  name: "timba",
   age: 24,
   color: "brown",
   health: 90
-})
+});
+
+ var jack = new Lion({
+   name: "jack",
+   age: 18,
+   color: "brown",
+   health: 100
+ })
+
+var controller = new GameController(
+  [solanga, malenda, pinky],
+  [scar, timba, jack]);
+
+$(".elephants").on("click", function() {
+  controller.playerChoosesLeft();
+  $(".greetings > p").css("display","none");
+  $(".greetings > p:nth-child(3)").css("display","block");
+
+});
+
+$(".ellie").on("click", function(){
+  controller.playerChoosesCombatant();
+  $(".greetings > p").css("display","none");
+
+  $(".greetings > p:nth-child(4)").css("display","block");
+});
+
+$(".ellibut").on("click", function(){
+  controller.attack();
+  $(".greetings > p").css("display","none");
+  $(".greetings > p:nth-child(5)").css("display","block");
+});
