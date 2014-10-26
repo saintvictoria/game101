@@ -16,19 +16,35 @@ step 7
 Game Over
 */
 
-function GameController() {
+function GameController(leftCombatants, rightCombatants) {
     this._turn = null;
+    this.leftCombatants = leftCombatants;
+    this.rightCombatants = rightCombatants;
     this.playerChoosesLeft = function(){
+      this.player = 'left';
     };
     this.playerChoosesRight = function(){
+      this.player = 'right';
     };
     this.playerChoosesCombatant = function(combatant){
+      this.playerCombatant = combatant;
+      this._computerChoosesCombatant()
     };
-    this._computerChoosesCombatant =function(){
+    this._computerChoosesCombatant = function(){
+      //whatever side the player did not choose
+      //is the computer side
+      //so the computer combatant is one from its side
+      var combatantChoices;
+      if ('left' === this.player){
+        combatantChoices = rightCombatants;
+      }else{
+        combatantChoices = leftCombatants;
+      }
+      this.computerCombatant = _.sample(combatantChoices);
     };
     this.attack = function(){
-      playerCombatant.attack();
-      computerCombatant.attack();
+      this.playerCombatant.attack(this.computerCombatant);
+      this.computerCombatant.attack(this.playerCombatant);
     };
     this.gameIsFinished = function(){
     };
