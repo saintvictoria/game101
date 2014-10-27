@@ -59,10 +59,9 @@ function GameController(leftCombatants, rightCombatants) {
     this.attack = function(){
       console.log(this.playerCombatant,"vs", this.computerCombatant);
       if(this.gameIsFinished()) {
-        //console.log(this.gameIsFinished,"game is over")
+        console.log("game is over");
         return;
       }
-
       this.playerCombatant.attack(this.computerCombatant);
       if(this.gameIsFinished()) {
         return;
@@ -179,5 +178,8 @@ $(".ellie, .lion").on("click", function(){
 
 $(".ellibut, .lionbut").on("click", function(){
   controller.attack();
-  turnOnMessageNumber(5);
+  if(controller.gameIsFinished()){
+    turnOnMessageNumber(5);
+  };
+  
 });
