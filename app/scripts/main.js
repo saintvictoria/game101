@@ -69,8 +69,8 @@ function GameController(leftCombatants, rightCombatants) {
       this.computerCombatant.attack(this.playerCombatant);
     };
     this.gameIsFinished = function(){
-      return this.playerCombatant.health <= 0 ||
-              this.computerCombatant.health <= 0;
+      return this.playerCombatant.health <= 0 || // playerCombatant
+              this.computerCombatant.health <= 0; //.computerCombatant
     };
 };
 
@@ -86,7 +86,7 @@ var Elephant = function (options){
   return stomped.health  -= _.random(20, 25);
   };
   this.life = function(stomped) {
-    return stomped.health -= _.random(30, 40);
+    return stomped.health -= _.random(30, 35);
   };
 };
 
@@ -101,7 +101,7 @@ var Lion = function (options){
     return chomped.health -= _.random(20, 25);
   };
   this.life = function(chomped) {
-    return chomped.health -= _.random(10,15);
+    return chomped.health -= _.random(20,35);
   };
 };
 
@@ -131,7 +131,7 @@ var scar = new Lion({
   age: 14,
   color: "yellow",
   life: 'poor',
-  health: 75
+  health: 95
 });
 
 var timba = new Lion({
@@ -181,5 +181,11 @@ $(".ellibut, .lionbut").on("click", function(){
   if(controller.gameIsFinished()){
     turnOnMessageNumber(5);
   };
-  
+
 });
+//$('.scar').prepend('<span class="lionHealth">' + scar.health + '</span>');
+// $('.timba').prepend('<span class="lionHealth">' + timba.health + '</span>');
+// $('.jack').prepend('<span class="lionHealth">' + jack.health + '</span>');
+// $('.solanga').append('<span class="ellieHealth">' + solanga.health + '</span>');
+// $('.malenda').append('<span class="ellieHealth">' + malenda.health + '</span>');
+// $('.pinky').append('<span class="ellieHealth">' + pinky.health + '</span>');
