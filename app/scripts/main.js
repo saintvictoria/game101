@@ -22,27 +22,40 @@ function GameController(leftCombatants, rightCombatants) {
     this.rightCombatants = rightCombatants;
     this.playerChoosesLeft = function(){
       this.player = 'left';
+      this.computer = 'right';
     };
     this.playerChoosesRight = function(){
       this.player = 'right';
+      this.computer = 'left';
     };
-    this.playerChoosesCombatant = function(combatant){
+    this.playerChoosesCombatant = function(/*string*/name){
+      var combatant = _.findWhere(
+       this.getPlayerCombatants(),{"name": name});
       this.playerCombatant = combatant;
       this._computerChoosesCombatant();
     };
     this._computerChoosesCombatant = function(){
+      var x = this.getComputerCombatants();
+      this.computerCombatant = _.sample(x);
+    };
+    this.getPlayerCombatants = function(){
+      return this.getCombatantsForSide(this.player);
+    };
+    this.getComputerCombatants = function(){
+      return this.getCombatantsForSide(this.computer);
+    };
+    this.getCombatantsForSide = function(side){
       //whatever side the player did not choose
       //is the computer side
       //so the computer combatant is one from its side
       var combatantChoices;
-      if ('left' === this.player){
+      if ('right' === side){
         combatantChoices = this.rightCombatants;
       }else{
         combatantChoices = this.leftCombatants;
       }
-      this.computerCombatant = _.sample(combatantChoices);
+      return combatantChoices;
     };
-
     this.attack = function(){
       console.log(this.playerCombatant,"vs", this.computerCombatant);
       if(this.gameIsFinished()) {
@@ -142,20 +155,25 @@ var controller = new GameController(
 
 $(".elephants").on("click", function() {
   controller.playerChoosesLeft();
+
   $(".greetings > p").css("display","none");
   $(".greetings > p:nth-child(3)").css("display","block");
 
 });
 
 $(".ellie").on("click", function(){
-  controller.playerChoosesCombatant();
-  $(".greetings > p").css("display","none");
+  // var animal name was clicked
+  var a = "solanga";
+  controller.playerChoosesCombatant(a);
 
+  $(".greetings > p").css("display","none");
   $(".greetings > p:nth-child(4)").css("display","block");
 });
 
 $(".ellibut").on("click", function(){
   controller.attack();
+
+
   $(".greetings > p").css("display","none");
   $(".greetings > p:nth-child(5)").css("display","block");
 });
