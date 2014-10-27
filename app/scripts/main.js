@@ -183,7 +183,7 @@ $(".ellibut, .lionbut").on("click", function(){
   };
 
 });
-//$('.scar').prepend('<span class="lionHealth">' + scar.health + '</span>');
+//$('.lion').prepend('<span class="lionHealth">' + lion.health + '</span>');
 // $('.timba').prepend('<span class="lionHealth">' + timba.health + '</span>');
 // $('.jack').prepend('<span class="lionHealth">' + jack.health + '</span>');
 // $('.solanga').append('<span class="ellieHealth">' + solanga.health + '</span>');

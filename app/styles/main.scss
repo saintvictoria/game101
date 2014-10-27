@@ -18,20 +18,31 @@ container {
   color: black;
   font-size: 30px;
 }
+ul
+{
+list-style-type: none;
+}
 .good {
-  border: solid 2px gray;
+  //border: solid 2px gray;
   float: left;
   font-size: 30px;
   color: white;
 }
 .bad {
-  border: solid 2px yellow;
+  //border: solid 2px yellow;
   float: right;
   font-size: 30px;
   color: yellow;
 }
 .lionbut {
+  font-size: 40px;
   float: right;
+  background-color: red;
+}
+.ellibut {
+  font-size: 40px;
+  float: left;
+  background-color: red;
 }
 img {
   height: 35px;
