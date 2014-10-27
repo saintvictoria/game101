@@ -153,27 +153,31 @@ var controller = new GameController(
   [solanga, malenda, pinky],
   [scar, timba, jack]);
 
+var turnOnMessageNumber = function(x){
+  $(".greetings > p").css("display","none");
+  $(".greetings > p:nth-child(" + x +")").css("display","block");
+
+};
+
 $(".elephants").on("click", function() {
   controller.playerChoosesLeft();
-
-  $(".greetings > p").css("display","none");
-  $(".greetings > p:nth-child(3)").css("display","block");
-
+  turnOnMessageNumber(3);
 });
 
-$(".ellie").on("click", function(){
+$(".lions").on("click", function() {
+  controller.playerChoosesRight();
+  turnOnMessageNumber(3);
+});
+
+$(".ellie, .lion").on("click", function(){
   // var animal name was clicked
-  var a = "solanga";
+  var animalName = $(this).text();
+  var a = animalName.toLowerCase();
   controller.playerChoosesCombatant(a);
-
-  $(".greetings > p").css("display","none");
-  $(".greetings > p:nth-child(4)").css("display","block");
+  turnOnMessageNumber(4);
 });
 
-$(".ellibut").on("click", function(){
+$(".ellibut, .lionbut").on("click", function(){
   controller.attack();
-
-
-  $(".greetings > p").css("display","none");
-  $(".greetings > p:nth-child(5)").css("display","block");
+  turnOnMessageNumber(5);
 });
