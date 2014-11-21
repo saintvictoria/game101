@@ -74,7 +74,6 @@ function GameController(leftCombatants, rightCombatants) {
     };
 };
 
-
 var Elephant = function (options){
   var options = options || {};
   this.name = options.name;
@@ -83,11 +82,14 @@ var Elephant = function (options){
   this.color = options.color;
   this.health = options.health;
   this.attack = function(stomped){
-  return stomped.health  -= _.random(20, 25);
+    var result = stomped.health -= _.random(20, 25);
+    $('.health' + '.' + stomped.name).html(result);
+    return result;
   };
   this.life = function(stomped) {
     return stomped.health -= _.random(30, 35);
   };
+  $('.health.' + options.name).html(options.health);
 };
 
 var Lion = function (options){
@@ -98,11 +100,14 @@ var Lion = function (options){
   this.color = options.color;
   this.health = options.health;
   this.attack = function(chomped){
-    return chomped.health -= _.random(20, 25);
+    var result = chomped.health -= _.random(20, 25);
+    $('.health' + '.' + chomped.name).html(result);
+    return result;
   };
   this.life = function(chomped) {
     return chomped.health -= _.random(20,35);
   };
+  $('.health.' + options.name).html(options.health);
 };
 
 var solanga = new Elephant({
