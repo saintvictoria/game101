@@ -2,6 +2,8 @@ This is my first game attempt!
 
 Simple js game using what I know my fourth week coding.
 
+Used Jquery and CSS, HTML and Javascript to build game.
+
 
 ## Yo, I'm a Readme
 
